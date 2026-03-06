@@ -75,7 +75,7 @@
                     Select services to continue
                 </button>
                 <p class="pay-btn__note">
-                    We'll send you a Square invoice for deposit + final payment.
+                    Invoice is auto-generated and emailed via Square.
                 </p>
             </aside>
 
@@ -89,6 +89,38 @@
                 Production for Realtors</p>
         </div>
     </footer>
+
+    <!-- Client Info Modal -->
+    <div id="invoiceModal" class="modal" style="display:none;">
+        <div class="modal__backdrop" id="modalBackdrop"></div>
+        <div class="modal__card">
+            <h3 class="modal__title">Send Square Invoice</h3>
+            <p class="modal__desc">Enter client details below. Square will email the invoice automatically.</p>
+
+            <label class="modal__label" for="clientName">Client Name</label>
+            <input type="text" id="clientName" class="modal__input" placeholder="e.g. Jane Doe" required />
+
+            <label class="modal__label" for="clientEmail">Client Email</label>
+            <input type="email" id="clientEmail" class="modal__input" placeholder="e.g. jane@realty.com" required />
+
+            <label class="modal__label" for="invoiceNote">Note (optional)</label>
+            <textarea id="invoiceNote" class="modal__input modal__textarea"
+                placeholder="Any special instructions..."></textarea>
+
+            <div class="modal__actions">
+                <button class="modal__cancel" id="modalCancel">Cancel</button>
+                <button class="modal__submit" id="modalSubmit">
+                    <span id="submitText">Send Invoice via Square</span>
+                    <span id="submitSpinner" style="display:none;">Sending...</span>
+                </button>
+            </div>
+
+            <p id="modalError" class="modal__error" style="display:none;"></p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" style="display:none;"></div>
 
     <script src="app.js"></script>
 </body>

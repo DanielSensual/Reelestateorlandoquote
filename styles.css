@@ -475,3 +475,188 @@ body {
         padding: 12px 16px;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Modal — Client Info for Square Invoice
+   ═══════════════════════════════════════════════════════════════ */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+.modal__card {
+    position: relative;
+    background: var(--cream-card);
+    border-radius: var(--radius);
+    padding: 32px;
+    width: 90%;
+    max-width: 460px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15);
+    animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal__title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.modal__desc {
+    font-size: 0.85rem;
+    color: var(--cream-muted);
+    margin-bottom: 20px;
+}
+
+.modal__label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--cream-muted);
+    margin-bottom: 4px;
+    margin-top: 12px;
+}
+
+.modal__input {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--cream-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    background: var(--cream-bg);
+    color: var(--cream-text);
+    transition: border-color 0.2s ease;
+}
+
+.modal__input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-glow);
+}
+
+.modal__textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.modal__actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.modal__cancel {
+    flex: 1;
+    padding: 12px;
+    background: var(--cream-bg);
+    border: 1px solid var(--cream-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--cream-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal__cancel:hover {
+    border-color: var(--cream-text);
+    color: var(--cream-text);
+}
+
+.modal__submit {
+    flex: 2;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--gold-glow);
+}
+
+.modal__submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px var(--gold-glow);
+}
+
+.modal__submit:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.modal__error {
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: var(--red);
+    text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Toast Notification
+   ═══════════════════════════════════════════════════════════════ */
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    animation: toastIn 0.3s ease;
+}
+
+.toast--success {
+    background: var(--green);
+}
+
+.toast--error {
+    background: var(--red);
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}

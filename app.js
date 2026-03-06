@@ -229,27 +229,108 @@
         totalAmount.textContent = '$' + total.toLocaleString();
     }
 
-    // ─── Pay Button ──────────────────────────────────────────────
+    // ─── Modal + Square API ────────────────────────────────────
 
+    const modal = document.getElementById('invoiceModal');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalCancel = document.getElementById('modalCancel');
+    const modalSubmit = document.getElementById('modalSubmit');
+    const submitText = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+    const modalError = document.getElementById('modalError');
+    const clientNameInput = document.getElementById('clientName');
+    const clientEmailInput = document.getElementById('clientEmail');
+    const invoiceNoteInput = document.getElementById('invoiceNote');
+    const toast = document.getElementById('toast');
+
+    function openModal() { modal.style.display = 'flex'; clientNameInput.focus(); }
+    function closeModal() {
+        modal.style.display = 'none';
+        modalError.style.display = 'none';
+        submitText.style.display = 'inline';
+        submitSpinner.style.display = 'none';
+        modalSubmit.disabled = false;
+    }
+    function showToast(msg, type) {
+        toast.textContent = msg;
+        toast.className = 'toast toast--' + type;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 4000);
+    }
+
+    // Open modal on pay button click
     payBtn.addEventListener('click', () => {
         const entries = Object.values(selected);
         if (entries.length === 0) return;
+        openModal();
+    });
 
-        const total = entries.reduce((sum, s) => sum + (s.price * s.qty), 0);
-        const deposit = Math.ceil(total * 0.5);
+    modalBackdrop.addEventListener('click', closeModal);
+    modalCancel.addEventListener('click', closeModal);
 
-        // Build line items for the Square link note
-        const items = entries.map(s => {
-            const qtyText = s.qty > 1 ? ` ×${s.qty}` : '';
-            return `${s.name}${qtyText}: $${(s.price * s.qty).toLocaleString()}`;
-        }).join('\n');
+    // Submit invoice
+    modalSubmit.addEventListener('click', async () => {
+        const name = clientNameInput.value.trim();
+        const email = clientEmailInput.value.trim();
+        const note = invoiceNoteInput.value.trim();
 
-        const subject = encodeURIComponent('ReelEstate Orlando — Video Production Quote');
-        const body = encodeURIComponent(
-            `Hi ReelEstate Orlando,\n\nI'd like to book the following services:\n\n${items}\n\nEstimated Total: $${total.toLocaleString()}\n\nPlease send me a Square invoice.\n\nThank you!`
-        );
+        if (!name || !email) {
+            modalError.textContent = 'Please enter both name and email.';
+            modalError.style.display = 'block';
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            modalError.textContent = 'Please enter a valid email address.';
+            modalError.style.display = 'block';
+            return;
+        }
 
-        window.open(`mailto:reelestateorlando@gmail.com?subject=${subject}&body=${body}`, '_self');
+        modalError.style.display = 'none';
+        submitText.style.display = 'none';
+        submitSpinner.style.display = 'inline';
+        modalSubmit.disabled = true;
+
+        const items = Object.values(selected).map(s => ({
+            name: s.name,
+            qty: s.qty,
+            price: s.price,
+        }));
+
+        try {
+            const res = await fetch('/api/invoice', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ clientName: name, clientEmail: email, items, note }),
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error || 'Failed to create invoice');
+            }
+
+            closeModal();
+            showToast(`✅ Invoice #${data.invoiceNumber} sent to ${email}`, 'success');
+
+            // Open Square payment page if available
+            if (data.publicUrl) {
+                setTimeout(() => window.open(data.publicUrl, '_blank'), 1500);
+            }
+
+            // Clear selections
+            Object.keys(selected).forEach(k => delete selected[k]);
+            renderServices();
+            renderSummary();
+            clientNameInput.value = '';
+            clientEmailInput.value = '';
+            invoiceNoteInput.value = '';
+
+        } catch (err) {
+            modalError.textContent = err.message;
+            modalError.style.display = 'block';
+            submitText.style.display = 'inline';
+            submitSpinner.style.display = 'none';
+            modalSubmit.disabled = false;
+        }
     });
 
     // ─── Init ────────────────────────────────────────────────────
