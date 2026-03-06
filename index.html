@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description"
-        content="ReelEstate Orlando — Professional video production quote builder for realtors. Filming, editing, and social media marketing rates." />
+        content="ReelEstate Orlando — Build your custom video production package. Select the services you need and receive an instant invoice." />
     <meta name="theme-color" content="#f9f6f1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Quote Builder | ReelEstate Orlando</title>
+    <title>Your Video Package | ReelEstate Orlando</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png" />
@@ -26,23 +26,72 @@
                 <div class="header__logo" aria-hidden="true"></div>
                 <span class="header__name">ReelEstate Orlando</span>
             </a>
-            <span class="header__tag">Quote Builder</span>
+            <a href="https://www.reelestateorlando.com" class="header__cta" target="_blank" rel="noopener">View Our
+                Work ↗</a>
         </div>
     </header>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <h1>Build Your <span class="gold">Quote</span></h1>
-            <p class="hero__sub">Select the services you need and we'll generate a custom quote instantly. Designed
-                exclusively for Orlando realtors.</p>
+            <p class="hero__eyebrow">Welcome to ReelEstate Orlando</p>
+            <h1>Design Your <span class="gold">Video Package</span></h1>
+            <p class="hero__sub">Select the services that fit your listing, brand, or campaign — and we'll send you a
+                secure invoice instantly. No back-and-forth needed.</p>
+
+            <div class="hero__trust">
+                <div class="trust-badge">
+                    <span class="trust-badge__icon">🎬</span>
+                    <span>Orlando's Real Estate Video Experts</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge__icon">⚡</span>
+                    <span>Fast Turnaround</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge__icon">🔒</span>
+                    <span>Secure Square Checkout</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="steps">
+        <div class="container">
+            <div class="steps__grid">
+                <div class="step">
+                    <div class="step__num">1</div>
+                    <h3 class="step__title">Choose Services</h3>
+                    <p class="step__desc">Pick filming, editing, or marketing services below</p>
+                </div>
+                <div class="step__arrow">→</div>
+                <div class="step">
+                    <div class="step__num">2</div>
+                    <h3 class="step__title">Review Your Quote</h3>
+                    <p class="step__desc">See your total update in real-time as you select</p>
+                </div>
+                <div class="step__arrow">→</div>
+                <div class="step">
+                    <div class="step__num">3</div>
+                    <h3 class="step__title">Get Your Invoice</h3>
+                    <p class="step__desc">Receive a secure Square invoice via email instantly</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="container" id="builder">
         <!-- Tabs -->
         <div class="tabs" id="tabs"></div>
+
+        <!-- Rate Notice -->
+        <div class="rate-notice">
+            <span class="rate-notice__icon">📍</span>
+            <span>Filming rate: <strong>$150/hr</strong> · Travel within 100mi: <strong>$60</strong> · 100+ mi:
+                <strong>$150</strong></span>
+        </div>
 
         <!-- Layout: Services + Summary -->
         <div class="layout">
@@ -53,13 +102,14 @@
             <!-- Sticky Summary -->
             <aside class="summary">
                 <h3 class="summary__title">
-                    Your Quote <span id="itemCount"
-                        style="color: var(--cream-muted); font-weight: 400; font-size: 0.85rem;">(0)</span>
+                    Your Package
+                    <span id="itemCount" style="color: var(--cream-muted); font-weight: 400; font-size: 0.85rem;">(0
+                        items)</span>
                 </h3>
 
                 <div id="summaryEmpty" class="summary__empty">
-                    <span class="summary__empty-icon">📋</span>
-                    Select services from the left to build your quote
+                    <span class="summary__empty-icon">📦</span>
+                    Select services to build your custom package
                 </div>
 
                 <ul id="summaryItems" class="summary__items"></ul>
@@ -72,21 +122,76 @@
                 </div>
 
                 <button id="payBtn" class="pay-btn pay-btn--disabled">
-                    Select services to continue
+                    Select services above ↑
                 </button>
                 <p class="pay-btn__note">
-                    Invoice is auto-generated and emailed via Square.
+                    You'll receive a secure Square invoice via email.
                 </p>
+
+                <div class="summary__secure">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    Payments secured by Square
+                </div>
             </aside>
 
         </div>
     </div>
 
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <p class="social-proof__title">Trusted by Orlando's top-producing agents</p>
+            <div class="social-proof__logos">
+                <span class="proof-tag">Keller Williams</span>
+                <span class="proof-tag">RE/MAX</span>
+                <span class="proof-tag">Coldwell Banker</span>
+                <span class="proof-tag">eXp Realty</span>
+                <span class="proof-tag">Century 21</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="faq__title">Common Questions</h2>
+            <div class="faq__grid">
+                <div class="faq__item">
+                    <h4 class="faq__q">How quickly can I book a shoot?</h4>
+                    <p class="faq__a">We can typically schedule within 48-72 hours of invoice payment. Rush availability
+                        is often same-week.</p>
+                </div>
+                <div class="faq__item">
+                    <h4 class="faq__q">What's the turnaround for edits?</h4>
+                    <p class="faq__a">Standard turnaround is 5-7 business days. Rush delivery is available for an
+                        additional fee.</p>
+                </div>
+                <div class="faq__item">
+                    <h4 class="faq__q">Can I combine services?</h4>
+                    <p class="faq__a">Absolutely! Mix and match any filming, editing, and social media services. Your
+                        quote updates in real-time.</p>
+                </div>
+                <div class="faq__item">
+                    <h4 class="faq__q">What formats do I receive?</h4>
+                    <p class="faq__a">All deliverables come in both 16:9 (landscape) and 9:16 (vertical) formats,
+                        optimized for MLS and social media.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 <a href="https://www.reelestateorlando.com">ReelEstate Orlando</a> · Professional Video
-                Production for Realtors</p>
+            <div class="footer__brand">ReelEstate Orlando</div>
+            <p class="footer__copy">© 2026 <a href="https://www.reelestateorlando.com">ReelEstate Orlando</a> ·
+                Professional Video Production for Realtors</p>
+            <p class="footer__contact">Questions? Email <a
+                    href="mailto:reelestateorlando@gmail.com">reelestateorlando@gmail.com</a> or call <a
+                    href="tel:+13216665228">(321) 666-5228</a></p>
         </div>
     </footer>
 
@@ -94,28 +199,50 @@
     <div id="invoiceModal" class="modal" style="display:none;">
         <div class="modal__backdrop" id="modalBackdrop"></div>
         <div class="modal__card">
-            <h3 class="modal__title">Send Square Invoice</h3>
-            <p class="modal__desc">Enter client details below. Square will email the invoice automatically.</p>
+            <h3 class="modal__title">Almost there! 🎬</h3>
+            <p class="modal__desc">Enter your details below and we'll email your invoice right away. You can pay
+                securely via card, bank transfer, or Cash App.</p>
 
-            <label class="modal__label" for="clientName">Client Name</label>
+            <label class="modal__label" for="clientName">Your Name</label>
             <input type="text" id="clientName" class="modal__input" placeholder="e.g. Jane Doe" required />
 
-            <label class="modal__label" for="clientEmail">Client Email</label>
+            <label class="modal__label" for="clientEmail">Your Email</label>
             <input type="email" id="clientEmail" class="modal__input" placeholder="e.g. jane@realty.com" required />
 
-            <label class="modal__label" for="invoiceNote">Note (optional)</label>
+            <label class="modal__label" for="invoiceNote">Special Requests (optional)</label>
             <textarea id="invoiceNote" class="modal__input modal__textarea"
-                placeholder="Any special instructions..."></textarea>
+                placeholder="Property address, preferred dates, rush delivery, etc."></textarea>
+
+            <div class="modal__summary" id="modalSummary"></div>
 
             <div class="modal__actions">
-                <button class="modal__cancel" id="modalCancel">Cancel</button>
+                <button class="modal__cancel" id="modalCancel">← Go Back</button>
                 <button class="modal__submit" id="modalSubmit">
-                    <span id="submitText">Send Invoice via Square</span>
+                    <span id="submitText">Send My Invoice</span>
                     <span id="submitSpinner" style="display:none;">Sending...</span>
                 </button>
             </div>
 
             <p id="modalError" class="modal__error" style="display:none;"></p>
+
+            <div class="modal__secure">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                Your info is only used to send your invoice. We never spam.
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" style="display:none;">
+        <div class="modal__backdrop" id="successBackdrop"></div>
+        <div class="modal__card modal__card--success">
+            <div class="success__icon">✅</div>
+            <h3 class="modal__title">Invoice Sent!</h3>
+            <p class="modal__desc" id="successMsg">Check your email for a secure Square payment link.</p>
+            <button class="modal__submit" id="successClose" style="margin-top: 20px;">Done</button>
         </div>
     </div>
 
