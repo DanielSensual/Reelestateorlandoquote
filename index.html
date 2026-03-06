@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description"
+        content="ReelEstate Orlando — Professional video production quote builder for realtors. Filming, editing, and social media marketing rates." />
+    <meta name="theme-color" content="#f9f6f1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Quote Builder | ReelEstate Orlando</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="/" class="header__brand">
+                <div class="header__logo" aria-hidden="true"></div>
+                <span class="header__name">ReelEstate Orlando</span>
+            </a>
+            <span class="header__tag">Quote Builder</span>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Build Your <span class="gold">Quote</span></h1>
+            <p class="hero__sub">Select the services you need and we'll generate a custom quote instantly. Designed
+                exclusively for Orlando realtors.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs" id="tabs"></div>
+
+        <!-- Layout: Services + Summary -->
+        <div class="layout">
+
+            <!-- Services Panel -->
+            <div id="services"></div>
+
+            <!-- Sticky Summary -->
+            <aside class="summary">
+                <h3 class="summary__title">
+                    Your Quote <span id="itemCount"
+                        style="color: var(--cream-muted); font-weight: 400; font-size: 0.85rem;">(0)</span>
+                </h3>
+
+                <div id="summaryEmpty" class="summary__empty">
+                    <span class="summary__empty-icon">📋</span>
+                    Select services from the left to build your quote
+                </div>
+
+                <ul id="summaryItems" class="summary__items"></ul>
+
+                <div class="summary__divider"></div>
+
+                <div id="summaryTotal" class="summary__total" style="display: none;">
+                    <span>Total</span>
+                    <span class="summary__total-amount" id="totalAmount">$0</span>
+                </div>
+
+                <button id="payBtn" class="pay-btn pay-btn--disabled">
+                    Select services to continue
+                </button>
+                <p class="pay-btn__note">
+                    We'll send you a Square invoice for deposit + final payment.
+                </p>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 <a href="https://www.reelestateorlando.com">ReelEstate Orlando</a> · Professional Video
+                Production for Realtors</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
